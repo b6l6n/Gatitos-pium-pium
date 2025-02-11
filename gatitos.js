@@ -41,7 +41,6 @@ for(let i = 0; i < numeroEnemigos; i++){
     });
 }
 
-
 //PUNTUACION
 let score = 0;
 
@@ -51,11 +50,23 @@ function dibujarGatito(){
     ctx.fillRect(gatito.x, gatito.y, gatito.width, gatito.height);
 }
 
+//DIBUJAR COMIDA
+function dibujarComida(){
+    ctx.fillStyle= jugador.color;
+    ctx.fillRect(peces.x, peces.y, peces.width, peces.height);
+}
+
 //DIBUJAR ENEMIGOS
 function dibujarEnemigos(){
     enemigo.forEach((enemigo) => {
         ctx.fillStyle = enemigo.color;
         ctx.fillRect(enemigo.x, enemigo.y, enemigo.width, enemigo.height);
+    
+    //DIBUJAR LASER
+    enemigo.laser.forEach((laser)=> {
+        ctx.fillStyle='red';
+        ctx.fillRect(laser.x, laser.y, 5, 15);
+    });
     });
 }
 
@@ -65,20 +76,21 @@ function moverEnemigos(){
         enemigo.y += enemigo.speed;
     });
 
+
 //REINICIAR POSICION ENEMIGOS
-    if(enemigo.y > canvas.height){
+    if(enemigo.y > canvasHeight){
         enemigo.y = -enemigo.height;
         enemigo.x = Math.random() * (canvas.width - enemigo.width);
     }
-};
 
 //DISPARAR LASER
 if (Math.random() < 0.02){
-    enemigo.toLocaleString.push({
-        x: enemigo.x + enemigo.width, / 2 - 2.5,
+    enemigo.laser.push({
+        x: enemigo.x + enemigo.width,  2 - 2.5,
         y: enemigo.y + enemigo.height,
     });
-}
+};
+
 
 //MOVER LASERES
 enemigo.laser.forEach((laser, index)=> {
@@ -89,5 +101,8 @@ enemigo.laser.forEach((laser, index)=> {
         enemigo.laser.splice(index, 1);
     }
 });
+}
+
+
 
 
