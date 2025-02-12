@@ -86,7 +86,7 @@ function moverEnemigos(){
 //DISPARAR LASER
 if (Math.random() < 0.02){
     enemigo.laser.push({
-        x: enemigo.x + enemigo.width,  2 - 2.5,
+        x: enemigo.x + enemigo.width / 2 - 2.5,
         y: enemigo.y + enemigo.height,
     });
 };
