@@ -48,10 +48,109 @@ for(let i = 0; i < numeroEnemigos; i++){
 let score = 0;
 
 //DIBUJAR GATITOS
-function dibujarGatito(){
-    ctx.fillStyle = gatito.color;
-    ctx.fillRect(gatito.x, gatito.y, gatito.width, gatito.height);
+function dibujarGatito() {
+    const x = gatito.x + gatito.width / 2;
+    const y = gatito.y + gatito.height / 2;
+    const scale = 1; // Puedes ajustar tamaño aquí
+
+    // Colores
+    const gray = '#d3d3d3';
+    const pink = '#ffb6c1';
+    const black = '#222';
+
+    // Cabeza
+    ctx.beginPath();
+    ctx.arc(x, y - 40 * scale, 30 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = gray;
+    ctx.fill();
+
+    // Orejas
+    ctx.beginPath();
+    ctx.moveTo(x - 25 * scale, y - 55 * scale);
+    ctx.lineTo(x - 35 * scale, y - 85 * scale);
+    ctx.lineTo(x - 5 * scale, y - 60 * scale);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x + 25 * scale, y - 55 * scale);
+    ctx.lineTo(x + 35 * scale, y - 85 * scale);
+    ctx.lineTo(x + 5 * scale, y - 60 * scale);
+    ctx.fill();
+
+    // Ojos
+    ctx.beginPath();
+    ctx.arc(x - 12 * scale, y - 42 * scale, 5 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = black;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x + 12 * scale, y - 42 * scale, 5 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = black;
+    ctx.fill();
+
+    // Brillitos ojos
+    ctx.beginPath();
+    ctx.arc(x - 14 * scale, y - 44 * scale, 1.5 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x + 10 * scale, y - 44 * scale, 1.5 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+
+    // Mejillas
+    ctx.beginPath();
+    ctx.arc(x - 20 * scale, y - 30 * scale, 3.5 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = pink;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x + 20 * scale, y - 30 * scale, 3.5 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = pink;
+    ctx.fill();
+
+    // Nariz
+    ctx.beginPath();
+    ctx.moveTo(x - 3 * scale, y - 33 * scale);
+    ctx.lineTo(x, y - 28 * scale);
+    ctx.lineTo(x + 3 * scale, y - 33 * scale);
+    ctx.fillStyle = pink;
+    ctx.fill();
+
+    // Boca
+    ctx.beginPath();
+    ctx.arc(x, y - 25 * scale, 5 * scale, 0, Math.PI, false);
+    ctx.strokeStyle = black;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Cuerpo
+    ctx.beginPath();
+    ctx.ellipse(x, y + 5 * scale, 25 * scale, 30 * scale, 0, 0, Math.PI * 2);
+    ctx.fillStyle = gray;
+    ctx.fill();
+
+    // Patitas delanteras
+    ctx.beginPath();
+    ctx.arc(x - 12 * scale, y + 35 * scale, 6 * scale, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x + 12 * scale, y + 35 * scale, 6 * scale, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Patitas traseras
+    ctx.beginPath();
+    ctx.arc(x - 20 * scale, y + 25 * scale, 4 * scale, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x + 20 * scale, y + 25 * scale, 4 * scale, 0, Math.PI * 2);
+    ctx.fill();
 }
+
+
 
 
 //DIBUJAR COMIDA
