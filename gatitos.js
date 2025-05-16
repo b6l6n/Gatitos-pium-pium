@@ -6,7 +6,7 @@ const canvasWidth= canvas.width;
 const canvasHeight = canvas.height;
 
 
-//GATITOS
+//GATITO
 const gatito = {
     x: canvas.width / 2 - 25,
     y: canvas.height - 100,
@@ -54,59 +54,59 @@ function dibujarGatito() {
     const scale = 1; // Puedes ajustar tamaño aquí
 
     // Colores
-    const gray = '#d3d3d3';
+    const orange = 'rgb(172, 108, 26)';
     const pink = '#ffb6c1';
     const black = '#222';
 
     // Cabeza
     ctx.beginPath();
     ctx.arc(x, y - 40 * scale, 30 * scale, 0, Math.PI * 2);
-    ctx.fillStyle = gray;
+    ctx.fillStyle = orange;
     ctx.fill();
 
     // Orejas
     ctx.beginPath();
-    ctx.moveTo(x - 25 * scale, y - 55 * scale);
-    ctx.lineTo(x - 35 * scale, y - 85 * scale);
-    ctx.lineTo(x - 5 * scale, y - 60 * scale);
+    ctx.moveTo(x - 25 * scale, y - 40 * scale);
+    ctx.lineTo(x - 40 * scale, y - 80* scale);
+    ctx.lineTo(x - 1 * scale, y -65 * scale);
     ctx.fill();
 
     ctx.beginPath();
-    ctx.moveTo(x + 25 * scale, y - 55 * scale);
-    ctx.lineTo(x + 35 * scale, y - 85 * scale);
-    ctx.lineTo(x + 5 * scale, y - 60 * scale);
+    ctx.moveTo(x + 25 * scale, y - 40 * scale);
+    ctx.lineTo(x + 40 * scale, y - 80 * scale);
+    ctx.lineTo(x + 1 * scale, y - 65 * scale);
     ctx.fill();
 
     // Ojos
     ctx.beginPath();
-    ctx.arc(x - 12 * scale, y - 42 * scale, 5 * scale, 0, Math.PI * 2);
+    ctx.arc(x - 12 * scale, y - 42 * scale, 7* scale, 0, Math.PI * 2);
     ctx.fillStyle = black;
     ctx.fill();
 
     ctx.beginPath();
-    ctx.arc(x + 12 * scale, y - 42 * scale, 5 * scale, 0, Math.PI * 2);
+    ctx.arc(x + 12 * scale, y - 42 * scale, 7 * scale, 0, Math.PI * 2);
     ctx.fillStyle = black;
     ctx.fill();
 
     // Brillitos ojos
     ctx.beginPath();
-    ctx.arc(x - 14 * scale, y - 44 * scale, 1.5 * scale, 0, Math.PI * 2);
+    ctx.arc(x - 13* scale, y - 44 * scale, 4 * scale, 0, Math.PI * 2);
     ctx.fillStyle = 'white';
     ctx.fill();
 
     ctx.beginPath();
-    ctx.arc(x + 10 * scale, y - 44 * scale, 1.5 * scale, 0, Math.PI * 2);
+    ctx.arc(x + 13 * scale, y - 44 * scale, 4 * scale, 0, Math.PI * 2);
     ctx.fillStyle = 'white';
     ctx.fill();
 
     // Mejillas
     ctx.beginPath();
-    ctx.arc(x - 20 * scale, y - 30 * scale, 3.5 * scale, 0, Math.PI * 2);
+    ctx.arc(x - 20 * scale, y - 30 * scale, 4 * scale, 0, Math.PI * 2);
     ctx.fillStyle = pink;
     ctx.fill();
 
     ctx.beginPath();
-    ctx.arc(x + 20 * scale, y - 30 * scale, 3.5 * scale, 0, Math.PI * 2);
+    ctx.arc(x + 20 * scale, y - 30 * scale, 4 * scale, 0, Math.PI * 2);
     ctx.fillStyle = pink;
     ctx.fill();
 
@@ -125,37 +125,46 @@ function dibujarGatito() {
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    // Cuerpo
+  // *** CUERPO DE PIE ***
     ctx.beginPath();
-    ctx.ellipse(x, y + 5 * scale, 25 * scale, 30 * scale, 0, 0, Math.PI * 2);
-    ctx.fillStyle = gray;
+    ctx.ellipse(x, y + 15 * scale, 30 * scale, 30 * scale, 8, 0, Math.PI * 2);
+    ctx.fillStyle = orange;
     ctx.fill();
 
-    // Patitas delanteras
+    // *** PATITAS DELANTERAS ***
+    // Izquierda
     ctx.beginPath();
-    ctx.arc(x - 12 * scale, y + 35 * scale, 6 * scale, 0, Math.PI * 2);
+    ctx.ellipse(x - 30 * scale, y + 15 * scale, 5 * scale, 20 * scale, Math.PI / 8, 0, Math.PI * 2);
     ctx.fill();
 
+    // Derecha (con espada)
     ctx.beginPath();
-    ctx.arc(x + 12 * scale, y + 35 * scale, 6 * scale, 0, Math.PI * 2);
+    ctx.ellipse(x + 30 * scale, y + 15 * scale, 5 * scale, 20 * scale, -Math.PI / 8, 0, Math.PI * 2);
     ctx.fill();
 
-    // Patitas traseras
+
+    // *** PATITAS TRASERAS (de pie) ***
     ctx.beginPath();
-    ctx.arc(x - 20 * scale, y + 25 * scale, 4 * scale, 0, Math.PI * 2);
+    ctx.arc(x - 20 * scale, y + 45 * scale, 10* scale, 1, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(x + 20 * scale, y + 45 * scale, 10 * scale, 1, Math.PI * 2);
     ctx.fill();
 
+     // *** COLA ***
     ctx.beginPath();
-    ctx.arc(x + 20 * scale, y + 25 * scale, 4 * scale, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.moveTo(x + 20 * scale, y + 15 * scale);
+    ctx.quadraticCurveTo(x + 60 * scale, y + 2 * scale, x + 50 * scale, y - 50 * scale);
+    ctx.lineWidth = 6 * scale;
+    ctx.strokeStyle = orange;
+    ctx.stroke();
+
+   
 }
 
-
-
-
 //DIBUJAR COMIDA
-function dibujarComida(){
-    ctx.fillStyle= jugador.color;
+function dibujarPeces(){
+    ctx.fillStyle= gatito.color;
     ctx.fillRect(peces.x, peces.y, peces.width, peces.height);
 }
 
@@ -179,7 +188,7 @@ function dibujarEnemigos(){
 //DIBUJAR PUNTUACION
 function dibujarPuntos(){
     ctx.fillStyle = 'black';
-    ctx.front = '20px gothic';
+    ctx.font = '20px gothic';
     ctx.fillText('Puntuacion: ${score}', 10, 30);
 }
 
@@ -226,24 +235,24 @@ function checkColisiones(){
 
 //COLISION CON COMIDA
 if(
-    jugador.x < comida.x + comida.width &&
-    jugador.x + jugador.width > comida.x &&
-    jugador.y < comida.y + comida.height &&
-    jugador.y + jugador.height > comida.y
+    gatito.x < peces.x + peces.width &&
+    gatito.x + gatito.width > peces.x &&
+    gatito.y < peces.y + peces.height &&
+    gatito.y + gatito.height > peces.y
 ){
     score++;
-    comida.x = Math.random() * (canvasWidth - peces.width);
-    comida.y = Math.random() * (canvasHeight - 200);
+    peces.x = Math.random() * (canvasWidth - peces.width);
+    peces.y = Math.random() * (canvasHeight - 200);
 }
 
 
 //COLISION CON ENEMIGOS
 enemigo.forEach((enemigo) => {
     if(
-        jugador.x < enemigo.x + enemigo.width &&
-        jugador.x + jugador.width > enemigo.x &&
-        jugador.y < enemigo.y + enemigo.height &&
-        jugador.y + jugador.height > enemigo.y
+        gatito.x < enemigo.x + enemigo.width &&
+        gatito.x + gatito.width > enemigo.x &&
+        gatito.y < enemigo.y + enemigo.height &&
+        gatito.y + gatito.height > enemigo.y
     ){
         alert('TE HA DERROTADO UN GATITO MALO, PUNTUACION Final: ${score}');
         document.location.reload();
@@ -253,10 +262,10 @@ enemigo.forEach((enemigo) => {
     //COLISION CON LASER
     enemigo.laser.forEach((laser) => {
         if(
-            jugador.x < laser.x + 5 &&
-            jugador.x + jugador.width > laser.x &&
-            jugador.y < laser.y + 15 &&
-            jugador.y + jugador.height > laser.y
+            gatito.x < laser.x + 5 &&
+            gatito.x + gatito.width > laser.x &&
+            gatito.y < laser.y + 15 &&
+            gatito.y + gatito.height > laser.y
         ){
             alert('TE HA MATADO UN LASER, PUNTUACION Final: ${score}');
             document.location.reload();
@@ -271,8 +280,8 @@ canvas.addEventListener('click', (e) => {
     const clickX = e.offsetX;
     if(clickX > canvasWidth / 2){
         //CLICK IZQUIERDA
-        jugador.x += jugador.speed;
-        if(jugador.x + jugador.width > canvasWidth) jugador.x = canvasWidth - jugador.width;
+        gatito.x += gatito.speed;
+        if(gatito.x + gatito.width > canvasWidth) gatito.x = canvasWidth - gatito.width;
     }
 });
 
@@ -281,7 +290,7 @@ canvas.addEventListener('click', (e) => {
 function update(){
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     dibujarGatito();
-    dibujarComida();
+    dibujarPeces();
     dibujarEnemigos();
     dibujarPuntos();
     moverEnemigos();
